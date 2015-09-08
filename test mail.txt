@@ -1,0 +1,50 @@
+Test SMTP:
+
+[root@cloud104 mailgraph_ext]# perl -e 'use MIME::Base64; print encode_base64("postmaster\@extmail.org")'
+cG9zdG1hc3RlckBleHRtYWlsLm9yZw==
+[root@cloud104 mailgraph_ext]# perl -e 'use MIME::Base64; print encode_base64("extmail")'
+ZXh0bWFpbA==
+[root@cloud104 mailgraph_ext]# telnet localhost 25
+Trying 127.0.0.1...
+Connected to localhost.localdomain (127.0.0.1).
+Escape character is '^]'.
+220 cloud104.test.com ESMTP Postfix - by AutoMail
+ehlo demo.domain.tld
+250-cloud104.test.com
+250-PIPELINING
+250-SIZE 5242880
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-AUTH=PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250 DSN
+auth login
+334 VXNlcm5hbWU6
+cG9zdG1hc3RlckBleHRtYWlsLm9yZw==
+334 UGFzc3dvcmQ6
+ZXh0bWFpbA==
+235 2.7.0 Authentication successful
+quit
+221 2.0.0 Bye
+Connection closed by foreign host.
+[root@cloud104 mailgraph_ext]# 
+
+Test POP3:
+[root@cloud104 ~]# telnet localhost 110
+Trying 127.0.0.1...
+Connected to localhost.localdomain (127.0.0.1).
+Escape character is '^]'.
++OK Hello there.
+user postmaster@extmail.org
++OK Password required.
+pass extmail
++OK logged in.
+list
++OK POP3 clients that break here, they violate STD53.
+.
+quit
++OK Bye-bye.
+Connection closed by foreign host.
+

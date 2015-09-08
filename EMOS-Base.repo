@@ -1,0 +1,19 @@
+# EMOS-Base.repo
+#
+# Created by ExtMail Dev Team: http://www.extmail.org/
+#
+# $Id$
+
+[EMOS-base]
+name=EMOS-Base
+baseurl=http://mirror.extmail.org/yum/emos/1.5/os/$basearch/
+gpgcheck=0
+priority=0
+protect=0
+
+[EMOS-update]
+name=EMOS-Updates
+baseurl=http://mirror.extmail.org/yum/emos/1.5/updates/$basearch/
+gpgcheck=0
+priority=0
+protect=0

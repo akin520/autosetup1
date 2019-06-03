@@ -1,0 +1,21 @@
+# EMOS-Local.repo
+# wget http://mirror.extmail.org/iso/emos/EMOS_1.6_x86_64.iso -O /tmp/EMOS_1.6_x86_64.iso
+# mkdir -p /emos
+# mount -o loop /tmp/EMOS_1.6_x86_64.iso /emos
+# Created by ExtMail Dev Team: http://www.extmail.org/
+#
+# $Id$
+
+[EMOS-base]
+name=EMOS-Base
+baseurl=file:///emos
+gpgcheck=0
+priority=0
+protect=0
+
+[EMOS-update]
+name=EMOS-Updates
+baseurl=file:///emos
+gpgcheck=0
+priority=0
+protect=0
